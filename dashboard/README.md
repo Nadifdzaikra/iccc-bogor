@@ -49,9 +49,12 @@ Ganti `public/logo-kota-bogor.svg` dengan lambang resmi Kota Bogor.
 
 ## Deploy
 
+Ringkas:
+
 ```bash
-docker compose build
-docker push nadifhartaman/iccc-bogor-dashboard:latest
-# di VPS
-docker compose pull && docker compose up -d
+npm run docker:release                                   # laptop: build + push
+docker compose -f docker-compose.prod.yml pull && \
+docker compose -f docker-compose.prod.yml up -d          # VPS
 ```
+
+Panduan lengkap (build, push, pull, update, rollback, Nginx, troubleshooting): [docs/DEPLOY.md](docs/DEPLOY.md).

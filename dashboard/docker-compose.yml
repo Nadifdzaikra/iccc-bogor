@@ -1,10 +1,24 @@
+# Build & jalankan di laptop/server build.
+#   docker compose build      → build image
+#   docker compose up -d      → jalankan container
+#   docker compose push       → kirim image ke Docker Hub
+# Variabel ${...} dibaca otomatis dari file .env di folder ini.
 services:
   frontend:
-    image: nadifhartaman/iccc-bogor-dashboard:latest
+    image: ${IMAGE_NAME:-nadifhartaman/iccc-bogor-dashboard}:${IMAGE_TAG:-latest}
     build:
       context: .
       dockerfile: Dockerfile
+      platforms:
+        - linux/amd64
+      # NEXT_PUBLIC_* ditanam ke bundle saat build → harus jadi build arg
+      args:
+        NEXT_PUBLIC_CCTV_HLS_TEMPLATE: ${NEXT_PUBLIC_CCTV_HLS_TEMPLATE:-}
+        NEXT_PUBLIC_MAP_STYLE_LIGHT: ${NEXT_PUBLIC_MAP_STYLE_LIGHT:-}
+        NEXT_PUBLIC_MAP_STYLE_3D: ${NEXT_PUBLIC_MAP_STYLE_3D:-}
+        NEXT_PUBLIC_MAP_STYLE_DARK: ${NEXT_PUBLIC_MAP_STYLE_DARK:-}
+        NEXT_PUBLIC_MAP_STYLE_POSITRON: ${NEXT_PUBLIC_MAP_STYLE_POSITRON:-}
     container_name: iccc-bogor-dashboard
     restart: unless-stopped
     ports:
-      - "3055:3000"
+      - "${HOST_PORT:-3055}:3000"

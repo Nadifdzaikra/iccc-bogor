@@ -1,0 +1,15 @@
+# Untuk VPS: cukup file ini (+ .env opsional). Tidak perlu source code.
+#   docker compose -f docker-compose.prod.yml pull
+#   docker compose -f docker-compose.prod.yml up -d
+services:
+  frontend:
+    image: ${IMAGE_NAME:-nadifhartaman/iccc-bogor-dashboard}:${IMAGE_TAG:-latest}
+    container_name: iccc-bogor-dashboard
+    restart: unless-stopped
+    ports:
+      - "${HOST_PORT:-3055}:3000"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
