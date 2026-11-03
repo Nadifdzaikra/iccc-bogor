@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+/* ── Bogor Command Center · design tokens ─────────────────────────────── */
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --color-canvas: #16172a;
+  --color-panel: #1f2133;
+  --color-panel-2: #272a3e;
+  --color-line: rgb(255 255 255 / 0.07);
+  --color-ink: #f1f2f8;
+  --color-ink-2: #b3b6c9;
+  --color-ink-3: #7c8099;
+
+  --color-brand: #4c5fe6;
+  --color-brand-soft: #6d7cf0;
+  --color-ok: #3dd4a0;
+  --color-warn: #ff8a2a;
+  --color-danger: #ff3d63;
+  --color-violet: #9b51ff;
+  --color-amber: #f6c443;
+  --color-sky: #22b8e6;
+
+  --radius-panel: 14px;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-canvas text-ink font-sans antialiased;
+    background-image:
+      radial-gradient(1200px 600px at 0% 0%, rgb(84 46 120 / 0.28), transparent 60%),
+      radial-gradient(1000px 700px at 100% 100%, rgb(30 60 120 / 0.28), transparent 60%);
+    background-attachment: fixed;
+    font-feature-settings: "tnum" 1, "cv11" 1;
+  }
+  ::selection {
+    background: rgb(76 95 230 / 0.5);
+  }
+}
+
+@utility panel {
+  border-radius: var(--radius-panel);
+  background: color-mix(in srgb, var(--color-panel) 92%, transparent);
+  border: 1px solid var(--color-line);
+}
+
+@utility tile {
+  border-radius: 10px;
+  background: var(--color-panel-2);
+}
+
+@utility scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(255 255 255 / 0.12) transparent;
+}
+
+/* MapLibre: rapikan kontrol bawaan agar sesuai tema */
+.maplibregl-ctrl-attrib {
+  background: rgb(22 23 42 / 0.6) !important;
+  color: var(--color-ink-3) !important;
+  font-size: 10px;
+}
+.maplibregl-ctrl-attrib a {
+  color: var(--color-ink-2) !important;
+}
+.maplibregl-canvas:focus {
+  outline: none;
+}
+
+@keyframes ping-soft {
+  75%,
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+.animate-ping-soft {
+  animation: ping-soft 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
