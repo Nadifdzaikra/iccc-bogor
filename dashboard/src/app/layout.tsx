@@ -17,7 +17,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="id">
-      <body className="min-h-svh">{children}</body>
+      <body className="min-h-app">{children}</body>
     </html>
   );
 }

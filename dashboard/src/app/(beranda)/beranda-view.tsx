@@ -49,7 +49,7 @@ export function BerandaView() {
   const regionName = region === "all" ? "Seluruh Kota Bogor" : KECAMATAN.find((k) => k.id === region)!.name;
 
   return (
-    <div className="relative grid gap-6 px-4 pt-44 pb-8 sm:px-8 lg:px-12 xl:h-svh xl:min-h-[860px] xl:grid-cols-[400px_1fr_400px] xl:pt-[132px] xl:pb-6 2xl:pt-[132px]">
+    <div className="relative grid gap-6 px-4 pt-44 pb-8 sm:px-8 lg:px-12 xl:h-app xl:min-h-[860px] xl:grid-cols-[400px_1fr_400px] xl:pt-[132px] xl:pb-6 2xl:pt-[132px]">
       {/* ── PETA (latar penuh pada layar lebar) ────────────────────────── */}
       <div className="relative -mx-4 h-[70vh] min-h-[460px] sm:-mx-8 lg:-mx-12 xl:absolute xl:inset-0 xl:m-0 xl:h-auto">
         <BaseMap styleKey="dark" center={region === "all" ? CITY_CENTER : KEC_CENTER[region]} zoom={region === "all" ? (wide ? 12.75 : 12.1) : 14} padding={wide ? { top: 190, bottom: 290, left: 450, right: 470 } : undefined}>

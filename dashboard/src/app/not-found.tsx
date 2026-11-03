@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <main className="grid min-h-svh place-items-center p-6 text-center">
+    <main className="grid min-h-app place-items-center p-6 text-center">
       <div>
         <p className="text-sm text-ink-3">404</p>
         <h1 className="mt-1 text-2xl font-semibold">Halaman tidak ditemukan</h1>

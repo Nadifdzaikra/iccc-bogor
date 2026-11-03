@@ -187,7 +187,7 @@ export function BaseMap({
     <MapCtx.Provider value={{ map, styleVersion }}>
       <div className={cn("relative h-full w-full overflow-hidden bg-[#1b1d30]", className)}>
         {/* inline style: CSS maplibre (.maplibregl-map{position:relative}) menimpa utilitas Tailwind */}
-        <div ref={ref} style={{ position: "absolute", inset: 0 }} />
+        <div ref={ref} style={{ position: "absolute", inset: 0, zoom: "calc(1 / var(--ui-zoom, 1))" }} />
         {failed && (
           <div className="pointer-events-none absolute inset-0 grid place-items-center text-xs text-ink-3">Peta dasar tidak dapat dimuat</div>
         )}
